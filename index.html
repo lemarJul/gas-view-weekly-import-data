@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Import Statistiques Hebdo</title>
+    <base target="_top" />
+    <?!= include('style'); ?>
+    <?!= include('script'); ?>
+  </head>
+
+  <body>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <lottie-player
+      src="https://lottie.host/7615ae18-bd91-4b80-a619-140e42d39952/7HfQUtp4Wv.json"
+      speed="0.5"
+      loop
+      direction="1"
+      mode="normal"
+    ></lottie-player>
+    <p>
+      Selectionner la semaine correpsondante au Statistiques de ventes que vous
+      importez.
+    </p>
+    <form action="#" id="week-form" class="box">
+      <input id="week" type="week" required />
+      <input type="submit" value="Importer" />
+    </form>
+  </body>
+</html>

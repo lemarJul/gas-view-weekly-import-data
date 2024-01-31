@@ -1,0 +1,32 @@
+<script defer>
+  window.onload = function () {
+    const form = document.getElementById("week-form");
+    const player = document.getElementsByTagName("lottie-player")[0];
+    const submitButton = form.querySelector("input[type='submit']");
+    submitButton.disable = () => (submitButton.disabled = true);
+    submitButton.enable = () => (submitButton.disabled = false);
+
+    form.onsubmit = function () {
+      player.play();
+      submitButton.disabled = true;
+
+      new Promise((resolve, reject) => {
+        google.script.run
+          .withSuccessHandler(resolve)
+          .withFailureHandler(reject)
+          .frontImport(document.getElementById("week").value);
+      })
+        .then(() => {
+          form.reset();
+        })
+        .catch((error) => {
+          alert("Error: " + error.message);
+        })
+        .finally(() => {
+          player.stop();
+          submitButton.enable();
+        });
+      return false; // prevent form from submitting
+    };
+  };
+</script>
